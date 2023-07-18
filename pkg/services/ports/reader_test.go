@@ -9,7 +9,6 @@ import (
 )
 
 func TestReadPorts(t *testing.T) {
-
 	t.Run("invalid root object", func(t *testing.T) {
 		channel := make(chan PortWithID)
 		data := `invalid`
