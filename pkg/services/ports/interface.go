@@ -8,7 +8,7 @@ import (
 var (
 	// ErrPortNotFound is returned by PortService methods when port is not found.
 	ErrPortNotFound = errors.New("port not found")
-	// ErrPortAlreadyExist is returned by PortService methods when port is not found.
+	// ErrPortAlreadyExist is returned by PortService methods when port already exist.
 	ErrPortAlreadyExist = errors.New("port already exist")
 )
 

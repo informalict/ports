@@ -79,7 +79,7 @@ func createSignalContext() context.Context {
 	return ctxCancel
 }
 
-// readInitFile reads data from fixed input file and
+// readInitFile reads data from fixed input file and populate then into port's service.
 func readInitFile(ctx context.Context, svc ports.PortService) error {
 	channel := make(chan ports.PortWithID, portsInMemory)
 

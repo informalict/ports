@@ -36,6 +36,9 @@ func (p *portMemory) Create(_ context.Context, ID string, port ports.Port) error
 
 // Get returns port for a given port's ID.
 func (p *portMemory) Get(_ context.Context, ID string) (ports.Port, error) {
+	p.mutex.RLock()
+	defer p.mutex.RUnlock()
+
 	if port, ok := p.ports[ID]; ok {
 		return port, nil
 	}
@@ -46,6 +49,9 @@ func (p *portMemory) Get(_ context.Context, ID string) (ports.Port, error) {
 // Update updates an existing port.
 // When port does not exist then error is returned.
 func (p *portMemory) Update(_ context.Context, ID string, port ports.Port) error {
+	p.mutex.Lock()
+	defer p.mutex.Unlock()
+
 	if _, ok := p.ports[ID]; !ok {
 		return ports.ErrPortNotFound
 	}
